@@ -59,6 +59,7 @@ public class ArrayIntQueue implements IntQueue {
         Integer value = elementData[head];
         head = (head + 1) % elementData.length;
         size--;
+        System.out.println("head in Deq: " + head);
         return value;
     }
 
@@ -68,16 +69,20 @@ public class ArrayIntQueue implements IntQueue {
         int tail = (head + size) % elementData.length;
         elementData[tail] = value;
         size++;
+        System.out.println("head in Enq: " + head);
         return true;
     }
 
     /** {@inheritDoc} */
     public boolean isEmpty() {
-        return size >= 0;
+        return size == 0;
     }
 
     /** {@inheritDoc} */
     public Integer peek() {
+        if (isEmpty())
+            return null;
+
         return elementData[head];
     }
 
